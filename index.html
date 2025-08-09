@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pookkalam Design Tool - Authentic Kerala Festival Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Onam Light Theme Palette */
+            --primary-light: #DAA520;
+            --secondary-light: #228B22;
+            --accent-light: #FF8C00;
+            --background-light: #FFFEF7;
+            --surface-light: #FFFFFF;
+            --text-primary-light: #2D1810;
+            --text-secondary-light: #5D4E37;
+            --border-light: #E8DCC6;
+            --shadow-light: rgba(218, 165, 32, 0.1);
+
+            /* Onam "Uthradam Night" Dark Theme Palette */
+            --primary-dark: #FFD700;
+            --secondary-dark: #32CD32;
+            --accent-dark: #FF8C00;
+            --background-dark: #1A120B;
+            --surface-dark: #2D1810;
+            --text-primary-dark: #FFF8DC;
+            --text-secondary-dark: #E8DCC6;
+            --border-dark: #5D4E37;
+            --shadow-dark: rgba(255, 215, 0, 0.1);
+        }
+
+        /* Set default theme to light */
+        body {
+            --primary: var(--primary-light);
+            --secondary: var(--secondary-light);
+            --accent: var(--accent-light);
+            --background: var(--background-light);
+            --surface: var(--surface-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --border: var(--border-light);
+            --shadow: var(--shadow-light);
+        }
+
+        /* Define dark theme properties */
+        body.dark-theme {
+            --primary: var(--primary-dark);
+            --secondary: var(--secondary-dark);
+            --accent: var(--accent-dark);
+            --background: var(--background-dark);
+            --surface: var(--surface-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --border: var(--border-dark);
+            --shadow: var(--shadow-dark);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Elegant Running Banner */
+        .onam-banner {
+            background: linear-gradient(90deg, #FFD700, #DAA520, #228B22, #DAA520, #FFD700);
+            background-size: 400% 100%;
+            animation: bannerGradient 8s ease-in-out infinite;
+            padding: 0.75rem 0;
+            box-shadow: 0 4px 20px rgba(218, 165, 32, 0.3);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .banner-content {
+            display: inline-block;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Noto Sans Malayalam', 'Inter', sans-serif;
+            animation: marquee 20s linear infinite;
+        }
+
+        .banner-emoji {
+            font-size: 1.75rem;
+            margin: 0 1rem;
+            vertical-align: middle;
+        }
+
+        @keyframes bannerGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Professional Header */
+        .header {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px var(--shadow);
+        }
+        
+        body.dark-theme .header {
+            background: rgba(45, 24, 16, 0.7);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--onam-gold), var(--primary));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 12px rgba(218, 165, 32, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Theme Switcher */
+        .theme-switcher {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .theme-switcher:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Design Studio */
+        .design-studio {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .studio-container {
+            background: var(--surface);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .studio-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr 340px;
+            min-height: 700px;
+        }
+
+        .panel {
+            background: var(--background);
+            border-right: 1px solid var(--border);
+            padding: 1.5rem;
+            overflow-y: auto;
+            max-height: 700px;
+        }
+
+        .panel-right {
+            border-right: none;
+            border-left: 1px solid var(--border);
+        }
+
+        .panel-section {
+            margin-bottom: 2rem;
+        }
+
+        .panel-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        /* Canvas Area */
+        .canvas-container {
+            background: var(--surface);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .canvas-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            background: var(--background);
+        }
+
+        .canvas-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        #designCanvas {
+            border: 3px solid var(--primary);
+            border-radius: 1rem;
+            cursor: crosshair;
+            background: white;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* Tools & Buttons */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+
+        .tool-btn {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 0.75rem;
+            background: var(--surface);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        
+        .tool-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .tool-btn.active {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(34, 139, 34, 0.05));
+            color: var(--primary);
+        }
+
+        .tool-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .shapes-grid, .floral-palette {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .shape-item, .floral-option {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--border);
+            border-radius: 0.75rem;
+            cursor: grab;
+            transition: all 0.3s ease;
+            background: var(--surface);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shape-item:hover, .floral-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .floral-option { cursor: pointer; }
+        .floral-option.selected {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(34, 139, 34, 0.05));
+        }
+
+        .item-icon {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .item-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .color-preview {
+            width: 60%;
+            height: 60%;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            margin-bottom: 0.25rem;
+        }
+        
+        .symmetry-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .symmetry-btn {
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            background: var(--surface);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        .symmetry-btn:hover {
+             border-color: var(--primary);
+             color: var(--primary);
+        }
+        .symmetry-btn.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(34, 139, 34, 0.05));
+        }
+
+        /* Controls */
+        .size-slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--border);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .size-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 3px solid var(--surface);
+        }
+        .size-value {
+            font-size: 0.75rem;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Action Bar */
+        .action-bar {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            background: var(--background);
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+        
+        .btn-outline {
+            background: var(--surface);
+            border-color: var(--border);
+            color: var(--text-primary);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 0 2rem 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--surface);
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            z-index: 1000;
+            animation: toastSlideIn 0.5s ease-out, toastFadeOut 0.5s ease-in 3.5s forwards;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        @keyframes toastSlideIn {
+            from { transform: translate(-50%, 100px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        @keyframes toastFadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Enhanced Visual Effects */
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .shape-item::before,
+        .floral-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .shape-item:hover::before,
+        .floral-option:hover::before {
+            left: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .studio-layout { grid-template-columns: 1fr; }
+            .panel { border-right: none; border-bottom: 1px solid var(--border); }
+            .panel-right { border-left: none; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .banner-content { font-size: 1rem; animation-duration: 15s; }
+            .tools-grid { grid-template-columns: repeat(2, 1fr); }
+            .shapes-grid, .floral-palette { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="onam-banner">
+        <div class="banner-content">
+            <span class="banner-emoji">🌺</span> ഹാപ്പി ഓണം! <span class="banner-emoji">🌻</span> Happy Onam to Everyone! <span class="banner-emoji">🌸</span> ഓണാശംസകൾ!
+            <span class="banner-emoji">🌺</span> ഹാപ്പി ഓണം! <span class="banner-emoji">🌻</span> Happy Onam to Everyone! <span class="banner-emoji">🌸</span> ഓണാശംസകൾ!
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🌺</div>
+                <div class="logo-text">Pookkalam Design Tool</div>
+            </div>
+            <div class="theme-switcher" id="themeSwitcher" title="Toggle Theme">🌙</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Authentic Kerala Pookkalam Designer</h1>
+            <p>Craft stunning traditional flower carpets with professional precision for the perfect Onam celebration.</p>
+        </section>
+
+        <div class="design-studio">
+            <div class="studio-container">
+                <div class="studio-layout">
+                    <div class="panel">
+                        <div class="panel-section">
+                            <h3 class="panel-title">Professional Tools</h3>
+                            <div class="tools-grid">
+                                <div class="tool-btn active" data-tool="floral-brush"><div class="tool-icon">🌸</div><span>Floral Brush</span></div>
+                                <div class="tool-btn" data-tool="petal-spray"><div class="tool-icon">🌺</div><span>Petal Spray</span></div>
+                                <div class="tool-btn" data-tool="precision-pen"><div class="tool-icon">✏️</div><span>Precision Pen</span></div>
+                                <div class="tool-btn" data-tool="leaf-brush"><div class="tool-icon">🍃</div><span>Leaf Pattern</span></div>
+                                <div class="tool-btn" data-tool="smart-fill"><div class="tool-icon">🎨</div><span>Smart Fill</span></div>
+                                <div class="tool-btn" data-tool="eraser"><div class="tool-icon">🧽</div><span>Eraser</span></div>
+                            </div>
+                        </div>
+                        <div class="panel-section">
+                            <h3 class="panel-title">Authentic Shapes</h3>
+                            <div class="shapes-grid" id="shapesGrid"></div>
+                        </div>
+                        <div class="panel-section">
+                            <h3 class="panel-title">Symmetry Patterns</h3>
+                            <div class="symmetry-options" id="symmetryOptions"></div>
+                        </div>
+                    </div>
+
+                    <div class="canvas-container">
+                        <div class="canvas-toolbar">
+                            <div class="toolbar-group">
+                                <span>Symmetry: <strong id="currentSymmetry">4-Way</strong></span>
+                            </div>
+                            <div class="toolbar-group">
+                                <button class="btn btn-outline" onclick="pookkalamCreator.undo()">↶ Undo</button>
+                                <button class="btn btn-outline" onclick="pookkalamCreator.redo()">↷ Redo</button>
+                            </div>
+                        </div>
+                        <div class="canvas-area">
+                            <canvas id="designCanvas" width="600" height="600"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-right">
+                        <div class="panel-section">
+                            <h3 class="panel-title">Kerala Flowers</h3>
+                            <div class="floral-palette" id="keralaFlowers"></div>
+                        </div>
+                        <div class="panel-section">
+                            <h3 class="panel-title">Traditional Colors</h3>
+                            <div class="floral-palette" id="traditionalColors"></div>
+                        </div>
+                        <div class="panel-section">
+                            <h3 class="panel-title">Precision Controls</h3>
+                            <label>Shape Size: <span id="shapeSizeValue">60px</span></label>
+                            <input type="range" class="size-slider" id="shapeSizeSlider" min="20" max="200" value="60">
+                            <br><br>
+                            <label>Brush Size: <span id="brushSizeValue">15px</span></label>
+                            <input type="range" class="size-slider" id="brushSizeSlider" min="2" max="50" value="15">
+                        </div>
+                        <div class="panel-section">
+                            <h3 class="panel-title">Quick Actions</h3>
+                            <button class="btn btn-outline" onclick="pookkalamCreator.addOmCenter()">ॐ Sacred Om</button>
+                            <button class="btn btn-outline" onclick="pookkalamCreator.addDiyaBorder()" style="margin-top: 0.5rem;">🪔 Diya Border</button>
+                            <button class="btn btn-secondary" onclick="pookkalamCreator.surpriseMe()" style="margin-top: 1rem; width:100%;">🎉 Surprise Me! </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-outline" onclick="pookkalamCreator.saveDesign()">💾 Save Design</button>
+                    <button class="btn btn-primary" onclick="pookkalamCreator.downloadDesign('png')">📥 Download PNG</button>
+                    <button class="btn btn-primary" onclick="pookkalamCreator.downloadDesign('jpeg')">📥 Download JPEG</button>
+                    <button class="btn btn-outline" onclick="pookkalamCreator.clearCanvas()">🗑️ New Pookkalam</button>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Design Elements</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Authentic Patterns</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="creations-count">0</div>
+                    <div class="stat-label">Creations Made</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Kerala</div>
+                    <div class="stat-label">Authentic</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        class PremiumPookkalamCreator {
+            constructor() {
+                this.canvas = document.getElementById('designCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.currentTool = 'floral-brush';
+                this.selectedFloral = 'thumba';
+                this.currentSymmetry = 4;
+                this.brushSize = 15;
+                this.shapeSize = 60;
+                this.isDrawing = false;
+                this.history = [];
+                this.historyIndex = -1;
+                this.floralPatterns = {};
+                this.creationsMade = parseInt(localStorage.getItem('pookkalamCreations') || '0');
+                this.lastX = 0;
+                this.lastY = 0;
+                
+                // Enhanced authentic shapes with proper icons
+                this.authenticShapes = [
+                    { name: 'Circle', type: 'circle', icon: '⭕', description: 'Sacred Circle' },
+                    { name: 'Lotus', type: 'lotus', icon: '🪷', description: 'Divine Lotus' },
+                    { name: 'Star', type: 'star', icon: '⭐', description: 'Celestial Star' },
+                    { name: 'Peacock', type: 'peacock', icon: '🦚', description: 'Royal Peacock' },
+                    { name: 'Lamp', type: 'lamp', icon: '🪔', description: 'Sacred Lamp' },
+                    { name: 'Elephant', type: 'elephant', icon: '🐘', description: 'Blessed Elephant' }
+                ];
+                
+                // Enhanced Kerala flowers with authentic icons
+                this.keralaFlowers = [
+                    { name: 'Thumba', type: 'thumba', color: '#FFFFFF', icon: '🤍', malayalam: 'തുമ്പ' },
+                    { name: 'Chemparathy', type: 'hibiscus', color: '#DC143C', icon: '🌺', malayalam: 'ചെമ്പരത്തി' },
+                    { name: 'Mandaram', type: 'mandaram', color: '#FFFF00', icon: '🌻', malayalam: 'മന്ദാരം' },
+                    { name: 'Kanakambaram', type: 'kanakambaram', color: '#FF8C00', icon: '🌼', malayalam: 'കണകാംബരം' },
+                    { name: 'Shankhupushpam', type: 'shankhupushpam', color: '#4169E1', icon: '🌸', malayalam: 'ശംഖുപുഷ്പം' },
+                    { name: 'Jasmine', type: 'jasmine', color: '#F8F8FF', icon: '🌷', malayalam: 'മല്ലി' }
+                ];
+                
+                // Enhanced traditional colors with gradients
+                this.traditionalColors = [
+                    { name: 'Golden Yellow', type: 'golden', color: '#FFD700', gradient: ['#FFD700', '#FFA500'], icon: '🟨' },
+                    { name: 'Forest Green', type: 'green', color: '#228B22', gradient: ['#228B22', '#006400'], icon: '🟩' },
+                    { name: 'Sacred Orange', type: 'orange', color: '#FF8C00', gradient: ['#FF8C00', '#FF4500'], icon: '🟧' },
+                    { name: 'Royal Red', type: 'red', color: '#DC143C', gradient: ['#DC143C', '#8B0000'], icon: '🟥' },
+                    { name: 'Pure White', type: 'white', color: '#FFFFFF', gradient: ['#FFFFFF', '#F5F5F5'], icon: '⬜' },
+                    { name: 'Earth Brown', type: 'brown', color: '#8B4513', gradient: ['#8B4513', '#654321'], icon: '🟫' }
+                ];
+                
+                this.symmetryModes = [
+                    { name: '4-Way', value: 4 },
+                    { name: '6-Way', value: 6 },
+                    { name: '8-Way', value: 8 },
+                    { name: '12-Way', value: 12 },
+                    { name: 'Radial', value: 'radial' },
+                    { name: 'Mandala', value: 'mandala' }
+                ];
+                
+                this.tools = [
+                    'floral-brush', 'petal-spray', 'precision-pen', 'leaf-brush', 'smart-fill', 'eraser'
+                ];
+
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.initializePalettes();
+                this.initializeShapes();
+                this.initializeSymmetry();
+                this.initializeCanvas();
+                this.saveState();
+                this.showToast('🌺', 'Welcome to PookkalamPro! Let\'s create something beautiful.');
+                this.updateCreationsCount();
+            }
+            
+            setDocumentTitle(title) {
+                document.title = `PookkalamPro | ${title}`;
+            }
+
+            setupEventListeners() {
+                const canvas = this.canvas;
+                
+                // Mouse events
+                canvas.addEventListener('mousedown', (e) => this.startDrawing(e));
+                canvas.addEventListener('mousemove', (e) => this.draw(e));
+                canvas.addEventListener('mouseup', () => this.stopDrawing());
+                canvas.addEventListener('mouseout', () => this.stopDrawing());
+                
+                // Touch events
+                canvas.addEventListener('touchstart', (e) => { 
+                    e.preventDefault(); 
+                    const touch = e.touches[0];
+                    const rect = canvas.getBoundingClientRect();
+                    const mouseEvent = new MouseEvent('mousedown', {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    canvas.dispatchEvent(mouseEvent);
+                });
+                
+                canvas.addEventListener('touchmove', (e) => { 
+                    e.preventDefault(); 
+                    const touch = e.touches[0];
+                    const mouseEvent = new MouseEvent('mousemove', {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    canvas.dispatchEvent(mouseEvent);
+                });
+                
+                canvas.addEventListener('touchend', (e) => { 
+                    e.preventDefault(); 
+                    const mouseEvent = new MouseEvent('mouseup', {});
+                    canvas.dispatchEvent(mouseEvent);
+                });
+
+                // Tool buttons
+                document.querySelectorAll('.tool-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.selectTool(e.currentTarget));
+                });
+                
+                // Sliders
+                document.getElementById('shapeSizeSlider').addEventListener('input', (e) => {
+                    this.updateSize('shape', e.target.value);
+                });
+                
+                document.getElementById('brushSizeSlider').addEventListener('input', (e) => {
+                    this.updateSize('brush', e.target.value);
+                });
+                
+                // Theme switcher
+                document.getElementById('themeSwitcher').addEventListener('click', () => this.toggleTheme());
+
+                // Drag and Drop for shapes
+                canvas.addEventListener('dragover', (e) => { 
+                    e.preventDefault(); 
+                    canvas.style.borderColor = 'var(--accent)'; 
+                });
+                
+                canvas.addEventListener('dragleave', () => { 
+                    canvas.style.borderColor = 'var(--primary)'; 
+                });
+                
+                canvas.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    canvas.style.borderColor = 'var(--primary)';
+                    const shapeType = e.dataTransfer.getData('text/plain');
+                    const rect = canvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    this.drawShape(shapeType, x, y);
+                    this.saveState();
+                });
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey || e.metaKey) {
+                        switch(e.key) {
+                            case 'z':
+                                e.preventDefault();
+                                this.undo();
+                                break;
+                            case 'y':
+                                e.preventDefault();
+                                this.redo();
+                                break;
+                            case 's':
+                                e.preventDefault();
+                                this.downloadDesign('png');
+                                break;
+                        }
+                    }
+                });
+            }
+
+            initializePalettes() {
+                // Initialize Kerala Flowers with enhanced visuals
+                const flowersContainer = document.getElementById('keralaFlowers');
+                this.keralaFlowers.forEach(f => {
+                    const texture = this.generateAdvancedFloralTexture(f.type, 80);
+                    this.floralPatterns[f.type] = { texture, color: f.color };
+                    const option = this.createEnhancedFloralOption(f);
+                    flowersContainer.appendChild(option);
+                });
+
+                // Initialize Traditional Colors with gradients
+                const colorsContainer = document.getElementById('traditionalColors');
+                this.traditionalColors.forEach(c => {
+                    const texture = this.generateAdvancedColorTexture(c.color, c.gradient, 80);
+                    this.floralPatterns[c.type] = { texture, color: c.color };
+                    const option = this.createEnhancedColorOption(c);
+                    colorsContainer.appendChild(option);
+                });
+                
+                // Select first flower by default
+                const firstOption = document.querySelector('.floral-option');
+                if (firstOption) {
+                    firstOption.classList.add('selected');
+                }
+            }
+            
+            createEnhancedFloralOption(flower) {
+                const option = document.createElement('div');
+                option.className = 'floral-option';
+                option.dataset.type = flower.type;
+                option.title = `${flower.name} (${flower.malayalam})`;
+                
+                option.innerHTML = `
+                    <div class="item-icon">${flower.icon}</div>
+                    <div class="item-label">${flower.name}</div>
+                `;
+                
+                // Add subtle background pattern
+                const pattern = this.generateMiniFloralPattern(flower.color);
+                option.style.backgroundImage = `url(${pattern.toDataURL()})`;
+                option.style.backgroundSize = 'cover';
+                option.style.backgroundPosition = 'center';
+                
+                option.addEventListener('click', () => this.selectFloral(option));
+                return option;
+            }
+
+            createEnhancedColorOption(colorData) {
+                const option = document.createElement('div');
+                option.className = 'floral-option';
+                option.dataset.type = colorData.type;
+                option.title = colorData.name;
+                
+                option.innerHTML = `
+                    <div class="color-preview" style="background: linear-gradient(135deg, ${colorData.gradient[0]}, ${colorData.gradient[1]})"></div>
+                    <div class="item-label">${colorData.name}</div>
+                `;
+                
+                option.addEventListener('click', () => this.selectFloral(option));
+                return option;
+            }
+
+            initializeShapes() {
+                const container = document.getElementById('shapesGrid');
+                this.authenticShapes.forEach(shape => {
+                    const shapeDiv = document.createElement('div');
+                    shapeDiv.className = 'shape-item';
+                    shapeDiv.draggable = true;
+                    shapeDiv.dataset.shape = shape.type;
+                    shapeDiv.title = shape.description;
+                    
+                    shapeDiv.innerHTML = `
+                        <div class="item-icon">${shape.icon}</div>
+                        <div class="item-label">${shape.name}</div>
+                    `;
+                    
+                    shapeDiv.addEventListener('dragstart', (e) => {
+                        e.dataTransfer.setData('text/plain', shape.type);
+                    });
+                    
+                    // Add click to place functionality
+                    shapeDiv.addEventListener('click', () => {
+                        this.selectedShape = shape.type;
+                        this.canvas.style.cursor = 'crosshair';
+                        this.showToast(shape.icon, `Click on canvas to place ${shape.name}`);
+                        
+                        // Add one-time click listener to canvas
+                        const placeShape = (e) => {
+                            const rect = this.canvas.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            this.drawShape(shape.type, x, y);
+                            this.saveState();
+                            this.canvas.removeEventListener('click', placeShape);
+                            this.canvas.style.cursor = 'crosshair';
+                            this.selectedShape = null;
+                        };
+                        this.canvas.addEventListener('click', placeShape);
+                    });
+                    
+                    container.appendChild(shapeDiv);
+                });
+            }
+
+            initializeSymmetry() {
+                const container = document.getElementById('symmetryOptions');
+                this.symmetryModes.forEach(mode => {
+                    const btn = document.createElement('button');
+                    btn.className = 'symmetry-btn';
+                    btn.dataset.symmetry = mode.value;
+                    btn.textContent = mode.name;
+                    btn.addEventListener('click', () => this.selectSymmetry(btn));
+                    container.appendChild(btn);
+                });
+                
+                // Select first symmetry by default
+                const firstBtn = document.querySelector('.symmetry-btn');
+                if (firstBtn) {
+                    firstBtn.classList.add('active');
+                }
+            }
+
+            initializeCanvas() {
+                this.ctx.fillStyle = '#FFFFFF';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Add enhanced grid for design guidance
+                this.drawEnhancedGrid();
+            }
+            
+            drawEnhancedGrid() {
+                const centerX = this.canvas.width / 2;
+                const centerY = this.canvas.height / 2;
+                
+                this.ctx.save();
+                this.ctx.strokeStyle = 'rgba(218, 165, 32, 0.08)';
+                this.ctx.lineWidth = 1;
+                this.ctx.setLineDash([3, 3]);
+                
+                // Draw center lines
+                this.ctx.beginPath();
+                this.ctx.moveTo(centerX, 0);
+                this.ctx.lineTo(centerX, this.canvas.height);
+                this.ctx.moveTo(0, centerY);
+                this.ctx.lineTo(this.canvas.width, centerY);
+                
+                // Draw diagonal lines
+                this.ctx.moveTo(0, 0);
+                this.ctx.lineTo(this.canvas.width, this.canvas.height);
+                this.ctx.moveTo(this.canvas.width, 0);
+                this.ctx.lineTo(0, this.canvas.height);
+                
+                // Draw concentric circles
+                for (let r = 50; r < 300; r += 50) {
+                    this.ctx.moveTo(centerX + r, centerY);
+                    this.ctx.arc(centerX, centerY, r, 0, 2 * Math.PI);
+                }
+                
+                this.ctx.stroke();
+                
+                // Add subtle center point
+                this.ctx.setLineDash([]);
+                this.ctx.fillStyle = 'rgba(218, 165, 32, 0.2)';
+                this.ctx.beginPath();
+                this.ctx.arc(centerX, centerY, 3, 0, 2 * Math.PI);
+                this.ctx.fill();
+                
+                this.ctx.restore();
+            }
+            
+            updateCreationsCount() {
+                document.getElementById('creations-count').textContent = this.creationsMade;
+                localStorage.setItem('pookkalamCreations', this.creationsMade.toString());
+            }
+
+            // Enhanced Core Drawing Logic
+            startDrawing(e) {
+                this.isDrawing = true;
+                const rect = this.canvas.getBoundingClientRect();
+                this.lastX = e.clientX - rect.left;
+                this.lastY = e.clientY - rect.top;
+                this.draw(e);
+            }
+
+            stopDrawing() {
+                if (this.isDrawing) {
+                    this.isDrawing = false;
+                    this.saveState();
+                    this.setDocumentTitle("Design Updated");
+                }
+            }
+
+            draw(e) {
+                if (!this.isDrawing) return;
+                
+                const rect = this.canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                this.drawWithEnhancedSymmetry(x, y);
+                
+                this.lastX = x;
+                this.lastY = y;
+            }
+
+            drawWithEnhancedSymmetry(x, y) {
+                const centerX = this.canvas.width / 2;
+                const centerY = this.canvas.height / 2;
+                
+                const drawFunctions = {
+                    'floral-brush': (px, py) => this.drawEnhancedFloralBrush(px, py),
+                    'petal-spray': (px, py) => this.drawEnhancedPetalSpray(px, py),
+                    'leaf-brush': (px, py) => this.drawEnhancedLeafBrush(px, py),
+                    'precision-pen': (px, py) => this.drawPrecisionDot(px, py),
+                    'eraser': (px, py) => this.erase(px, py),
+                    'smart-fill': (px, py) => this.smartFillWithEnhancedFloral(px, py)
+                };
+                
+                const drawFunc = drawFunctions[this.currentTool];
+                if (!drawFunc) return;
+
+                const symmetryCount = parseInt(this.currentSymmetry);
+                
+                if (!isNaN(symmetryCount)) {
+                    for(let i = 0; i < symmetryCount; i++) {
+                        const angle = (i * 2 * Math.PI) / symmetryCount;
+                        const dx = x - centerX;
+                        const dy = y - centerY;
+                        const rotatedX = dx * Math.cos(angle) - dy * Math.sin(angle) + centerX;
+                        const rotatedY = dx * Math.sin(angle) + dy * Math.cos(angle) + centerY;
+                        
+                        if (this.isPointInCanvas(rotatedX, rotatedY)) {
+                            drawFunc(rotatedX, rotatedY);
+                        }
+                    }
+                } else if (this.currentSymmetry === 'radial') {
+                    const dx = x - centerX;
+                    const dy = y - centerY;
+                    const distance = Math.sqrt(dx*dx + dy*dy);
+                    const angleFromCenter = Math.atan2(dy, dx);
+                    
+                    for(let i = 0; i < 12; i++) {
+                        const angle = (i * 2 * Math.PI) / 12;
+                        const px = distance * Math.cos(angle + angleFromCenter) + centerX;
+                        const py = distance * Math.sin(angle + angleFromCenter) + centerY;
+                        if (this.isPointInCanvas(px, py)) {
+                            drawFunc(px, py);
+                        }
+                    }
+                } else if (this.currentSymmetry === 'mandala') {
+                    const dx = x - centerX;
+                    const dy = y - centerY;
+                    const distance = Math.sqrt(dx*dx + dy*dy);
+                    const baseAngle = Math.atan2(dy, dx);
+                    
+                    for(let ring = 0; ring < 3; ring++) {
+                        const ringRadius = distance * (1 + ring * 0.3);
+                        for(let i = 0; i < 16; i++) {
+                            const angle = (i * 2 * Math.PI) / 16 + baseAngle + ring * 0.1;
+                            const px = ringRadius * Math.cos(angle) + centerX;
+                            const py = ringRadius * Math.sin(angle) + centerY;
+                            
+                            if (this.isPointInCanvas(px, py)) {
+                                this.ctx.save();
+                                this.ctx.globalAlpha = 0.4 - ring * 0.1;
+                                drawFunc(px, py);
+                                this.ctx.restore();
+                            }
+                        }
+                    }
+                }
+            }
+            
+            isPointInCanvas(x, y) {
+                return x >= 0 && x < this.canvas.width && y >= 0 && y < this.canvas.height;
+            }
+            
+            // Enhanced Tool-specific draw methods
+            drawEnhancedFloralBrush(x, y) {
+                const pattern = this.floralPatterns[this.selectedFloral];
+                if (!pattern) return;
+                
+                const size = this.brushSize;
+                const variations = 3;
+                
+                for(let i = 0; i < variations; i++) {
+                    const offsetX = (Math.random() - 0.5) * size * 0.3;
+                    const offsetY = (Math.random() - 0.5) * size * 0.3;
+                    const varSize = size * (0.7 + Math.random() * 0.6);
+                    
+                    this.ctx.save();
+                    this.ctx.globalAlpha = 0.7 - i * 0.1;
+                    this.ctx.translate(x + offsetX, y + offsetY);
+                    this.ctx.rotate(Math.random() * 2 * Math.PI);
+                    this.ctx.drawImage(pattern.texture, -varSize/2, -varSize/2, varSize, varSize);
+                    this.ctx.restore();
+                }
+            }
+
+            drawEnhancedPetalSpray(x, y) {
+                const pattern = this.floralPatterns[this.selectedFloral];
+                if (!pattern) return;
+                
+                // Create more natural petal spray
+                for(let i = 0; i < 8; i++) {
+                    const angle = Math.random() * 2 * Math.PI;
+                    const distance = Math.random() * this.brushSize * 1.5;
+                    const px = x + Math.cos(angle) * distance;
+                    const py = y + Math.sin(angle) * distance;
+                    const size = Math.random() * this.brushSize * 0.4 + 3;
+                    
+                    this.ctx.save();
+                    this.ctx.globalAlpha = 0.6 + Math.random() * 0.3;
+                    this.ctx.translate(px, py);
+                    this.ctx.rotate(angle);
+                    this.ctx.drawImage(pattern.texture, -size/2, -size/2, size, size);
+                    this.ctx.restore();
+                }
+            }
+
+            drawEnhancedLeafBrush(x, y) {
+                this.ctx.save();
+                
+                // Create gradient for realistic leaf
+                const gradient = this.ctx.createRadialGradient(x, y, 0, x, y, this.brushSize);
+                gradient.addColorStop(0, '#32CD32');
+                gradient.addColorStop(0.5, '#228B22');
+                gradient.addColorStop(1, '#006400');
+                
+                this.ctx.fillStyle = gradient;
+                this.ctx.globalAlpha = 0.8;
+                
+                // Draw realistic leaf shape
+                this.ctx.beginPath();
+                this.ctx.ellipse(x, y, this.brushSize/2, this.brushSize, Math.random() * 0.5, 0, 2 * Math.PI);
+                this.ctx.fill();
+                
+                // Add detailed leaf vein
+                this.ctx.strokeStyle = '#006400';
+                this.ctx.lineWidth = 2;
+                this.ctx.globalAlpha = 1;
+                this.ctx.beginPath();
+                this.ctx.moveTo(x, y - this.brushSize * 0.8);
+                this.ctx.lineTo(x, y + this.brushSize * 0.8);
+                
+                // Add side veins
+                for(let i = -0.6; i <= 0.6; i += 0.3) {
+                    this.ctx.moveTo(x, y + i * this.brushSize);
+                    this.ctx.lineTo(x + this.brushSize * 0.2, y + i * this.brushSize + this.brushSize * 0.1);
+                    this.ctx.moveTo(x, y + i * this.brushSize);
+                    this.ctx.lineTo(x - this.brushSize * 0.2, y + i * this.brushSize + this.brushSize * 0.1);
+                }
+                
+                this.ctx.stroke();
+                this.ctx.restore();
+            }
+
+            drawPrecisionDot(x, y) {
+                const pattern = this.floralPatterns[this.selectedFloral];
+                if (!pattern) return;
+                
+                const size = Math.min(this.brushSize, 12);
+                this.ctx.save();
+                this.ctx.globalAlpha = 0.9;
+                this.ctx.shadowColor = 'rgba(0,0,0,0.2)';
+                this.ctx.shadowBlur = 3;
+                this.ctx.drawImage(pattern.texture, x - size/2, y - size/2, size, size);
+                this.ctx.restore();
+            }
+
+            erase(x, y) {
+                this.ctx.save();
+                this.ctx.globalCompositeOperation = 'destination-out';
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, this.brushSize, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.restore();
+            }
+
+            smartFillWithEnhancedFloral(x, y) {
+                const pattern = this.floralPatterns[this.selectedFloral];
+                if (!pattern) return;
+                
+                // Create dynamic pattern fill with varying opacity
+                this.ctx.save();
+                const patternObj = this.ctx.createPattern(pattern.texture, 'repeat');
+                this.ctx.fillStyle = patternObj;
+                
+                // Create multiple overlapping circles with different opacities
+                for(let i = 0; i < 3; i++) {
+                    this.ctx.globalAlpha = 0.4 - i * 0.1;
+                    this.ctx.beginPath();
+                    this.ctx.arc(x + i * 5, y + i * 5, this.brushSize * (2 - i * 0.3), 0, 2 * Math.PI);
+                    this.ctx.fill();
+                }
+                
+                this.ctx.restore();
+            }
+
+            drawShape(type, x, y) {
+                this.ctx.save();
+                const pattern = this.floralPatterns[this.selectedFloral];
+                
+                // Enhanced shape rendering with gradients and shadows
+                this.ctx.shadowColor = 'rgba(0,0,0,0.3)';
+                this.ctx.shadowBlur = 8;
+                this.ctx.shadowOffsetY = 4;
+                
+                if (pattern) {
+                    const patternObj = this.ctx.createPattern(pattern.texture, 'repeat');
+                    this.ctx.fillStyle = patternObj;
+                } else {
+                    const gradient = this.ctx.createRadialGradient(x, y, 0, x, y, this.shapeSize);
+                    gradient.addColorStop(0, '#FFD700');
+                    gradient.addColorStop(1, '#DAA520');
+                    this.ctx.fillStyle = gradient;
+                }
+                
+                this.ctx.strokeStyle = '#B8860B';
+                this.ctx.lineWidth = 3;
+                
+                const size = this.shapeSize;
+                
+                switch(type) {
+                    case 'circle':
+                        this.ctx.beginPath();
+                        this.ctx.arc(x, y, size/2, 0, 2 * Math.PI);
+                        break;
+                        
+                    case 'lotus':
+                        this.drawEnhancedLotus(x, y, size);
+                        break;
+                        
+                    case 'star':
+                        this.drawEnhancedStar(x, y, size);
+                        break;
+                        
+                    case 'peacock':
+                        this.drawEnhancedPeacock(x, y, size);
+                        break;
+                        
+                    case 'lamp':
+                        this.drawEnhancedLamp(x, y, size);
+                        break;
+                        
+                    case 'elephant':
+                        this.drawEnhancedElephant(x, y, size);
+                        break;
+                }
+                
+                this.ctx.fill();
+                this.ctx.stroke();
+                this.ctx.restore();
+            }
+            
+            // Enhanced shape drawing methods
+            drawEnhancedLotus(x, y, size) {
+                // Draw multiple layers of lotus petals
+                const layers = [
+                    { petals: 12, radius: size * 0.4, opacity: 0.8 },
+                    { petals: 8, radius: size * 0.3, opacity: 0.9 },
+                    { petals: 6, radius: size * 0.2, opacity: 1.0 }
+                ];
+                
+                layers.forEach(layer => {
+                    this.ctx.save();
+                    this.ctx.globalAlpha = layer.opacity;
+                    
+                    for(let i = 0; i < layer.petals; i++) {
+                        const angle = (i * 2 * Math.PI) / layer.petals;
+                        this.ctx.save();
+                        this.ctx.translate(x, y);
+                        this.ctx.rotate(angle);
+                        this.ctx.beginPath();
+                        this.ctx.ellipse(0, -layer.radius, size/8, layer.radius, 0, 0, 2 * Math.PI);
+                        this.ctx.fill();
+                        this.ctx.stroke();
+                        this.ctx.restore();
+                    }
+                    this.ctx.restore();
+                });
+                
+                // Center
+                this.ctx.save();
+                const centerGradient = this.ctx.createRadialGradient(x, y, 0, x, y, size/8);
+                centerGradient.addColorStop(0, '#FFD700');
+                centerGradient.addColorStop(1, '#FF8C00');
+                this.ctx.fillStyle = centerGradient;
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, size/8, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                this.ctx.restore();
+            }
+            
+            drawEnhancedStar(x, y, size) {
+                const spikes = 8;
+                const outerRadius = size / 2;
+                const innerRadius = outerRadius * 0.4;
+                
+                this.ctx.beginPath();
+                for(let i = 0; i < spikes * 2; i++) {
+                    const radius = i % 2 === 0 ? outerRadius : innerRadius;
+                    const angle = (i * Math.PI) / spikes;
+                    const px = x + Math.cos(angle) * radius;
+                    const py = y + Math.sin(angle) * radius;
+                    
+                    if (i === 0) {
+                        this.ctx.moveTo(px, py);
+                    } else {
+                        this.ctx.lineTo(px, py);
+                    }
+                }
+                this.ctx.closePath();
+                
+                // Add inner star
+                this.ctx.save();
+                this.ctx.fillStyle = '#FFD700';
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, innerRadius * 0.5, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.restore();
+            }
+            
+            drawEnhancedPeacock(x, y, size) {
+                // Peacock body
+                this.ctx.beginPath();
+                this.ctx.ellipse(x, y + size * 0.1, size/4, size/3, 0, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                
+                // Peacock neck
+                this.ctx.beginPath();
+                this.ctx.ellipse(x, y - size * 0.2, size/8, size/4, 0, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                
+                // Peacock feathers with enhanced details
+                for(let i = 0; i < 7; i++) {
+                    const angle = (i - 3) * 0.3;
+                    const featherX = x + Math.sin(angle) * size/2;
+                    const featherY = y - size/2;
+                    
+                    this.ctx.save();
+                    const featherGradient = this.ctx.createRadialGradient(featherX, featherY, 0, featherX, featherY, size/8);
+                    featherGradient.addColorStop(0, '#4169E1');
+                    featherGradient.addColorStop(0.5, '#228B22');
+                    featherGradient.addColorStop(1, '#FFD700');
+                    this.ctx.fillStyle = featherGradient;
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(featherX, featherY, size/10, 0, 2 * Math.PI);
+                    this.ctx.fill();
+                    this.ctx.stroke();
+                    this.ctx.restore();
+                }
+            }
+            
+            drawEnhancedLamp(x, y, size) {
+                // Diya base with gradient
+                this.ctx.save();
+                const baseGradient = this.ctx.createLinearGradient(x - size/2, y, x + size/2, y);
+                baseGradient.addColorStop(0, '#8B4513');
+                baseGradient.addColorStop(0.5, '#DAA520');
+                baseGradient.addColorStop(1, '#8B4513');
+                this.ctx.fillStyle = baseGradient;
+                
+                this.ctx.beginPath();
+                this.ctx.ellipse(x, y, size/2, size/4, 0, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                
+                // Spout
+                this.ctx.beginPath();
+                this.ctx.ellipse(x + size/3, y, size/8, size/6, 0, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                this.ctx.restore();
+                
+                // Enhanced flame with animation effect
+                this.ctx.save();
+                const flameGradient = this.ctx.createLinearGradient(x + size/3, y - size/2, x + size/3, y);
+                flameGradient.addColorStop(0, '#FFD700');
+                flameGradient.addColorStop(0.5, '#FF6B35');
+                flameGradient.addColorStop(1, '#FF4500');
+                this.ctx.fillStyle = flameGradient;
+                
+                this.ctx.beginPath();
+                this.ctx.moveTo(x + size/3, y);
+                this.ctx.quadraticCurveTo(x + size/2, y - size/3, x + size/3 - 3, y - size/4);
+                this.ctx.quadraticCurveTo(x + size/3, y - size/2, x + size/3 + 3, y - size/4);
+                this.ctx.quadraticCurveTo(x + size/3 + 8, y - size/3, x + size/3, y);
+                this.ctx.fill();
+                this.ctx.restore();
+            }
+            
+            drawEnhancedElephant(x, y, size) {
+                // Elephant body with detailed shape
+                this.ctx.save();
+                const bodyGradient = this.ctx.createRadialGradient(x, y, 0, x, y, size/3);
+                bodyGradient.addColorStop(0, '#A9A9A9');
+                bodyGradient.addColorStop(1, '#696969');
+                this.ctx.fillStyle = bodyGradient;
+                
+                this.ctx.beginPath();
+                this.ctx.ellipse(x, y, size/3, size/4, 0, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                
+                // Elephant head
+                this.ctx.beginPath();
+                this.ctx.ellipse(x - size/6, y - size/6, size/5, size/6, 0, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                
+                // Enhanced trunk with curves
+                this.ctx.strokeStyle = this.ctx.fillStyle;
+                this.ctx.lineWidth = size/12;
+                this.ctx.beginPath();
+                this.ctx.moveTo(x - size/3, y);
+                this.ctx.quadraticCurveTo(x - size/2, y + size/4, x - size/3, y + size/3);
+                this.ctx.quadraticCurveTo(x - size/4, y + size/2, x - size/6, y + size/3);
+                this.ctx.stroke();
+                
+                // Ears
+                this.ctx.fillStyle = bodyGradient;
+                this.ctx.beginPath();
+                this.ctx.ellipse(x - size/4, y - size/4, size/8, size/6, -0.5, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                
+                this.ctx.beginPath();
+                this.ctx.ellipse(x + size/8, y - size/4, size/8, size/6, 0.5, 0, 2 * Math.PI);
+                this.ctx.fill();
+                this.ctx.stroke();
+                
+                this.ctx.restore();
+            }
+
+            // State and UI Management (Enhanced)
+            selectTool(btn) {
+                document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.currentTool = btn.dataset.tool;
+                
+                const toolName = btn.querySelector('span').textContent;
+                this.showToast('🛠️', `${toolName} Selected`);
+                this.setDocumentTitle(`Using ${toolName}`);
+                
+                // Update cursor based on tool
+                const cursors = {
+                    'floral-brush': 'url("data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'20\' height=\'20\'><circle cx=\'10\' cy=\'10\' r=\'8\' fill=\'%23FFD700\' stroke=\'%23DAA520\'/></svg>") 10 10, auto',
+                    'eraser': 'url("data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'20\' height=\'20\'><rect width=\'16\' height=\'16\' x=\'2\' y=\'2\' fill=\'%23FF6B6B\' stroke=\'%23FF4757\'/></svg>") 10 10, auto'
+                };
+                
+                this.canvas.style.cursor = cursors[this.currentTool] || 'crosshair';
+            }
+
+            selectFloral(el) {
+                document.querySelectorAll('.floral-option').forEach(opt => opt.classList.remove('selected'));
+                el.classList.add('selected');
+                this.selectedFloral = el.dataset.type;
+                
+                // Enhanced feedback with icon
+                const flower = this.keralaFlowers.find(f => f.type === el.dataset.type);
+                const color = this.traditionalColors.find(c => c.type === el.dataset.type);
+                
+                if (flower) {
+                    this.showToast(flower.icon, `${flower.name} Selected`);
+                } else if (color) {
+                    this.showToast(color.icon, `${color.name} Selected`);
+                }
+            }
+
+            selectSymmetry(btn) {
+                document.querySelectorAll('.symmetry-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.currentSymmetry = btn.dataset.symmetry;
+                document.getElementById('currentSymmetry').textContent = btn.textContent;
+                this.showToast('🔄', `${btn.textContent} Symmetry Activated`);
+                
+                // Redraw grid based on symmetry
+                this.initializeCanvas();
+            }
+
+            updateSize(type, value) {
+                if(type === 'shape') {
+                    this.shapeSize = parseInt(value);
+                    document.getElementById('shapeSizeValue').textContent = `${this.shapeSize}px`;
+                } else {
+                    this.brushSize = parseInt(value);
+                    document.getElementById('brushSizeValue').textContent = `${this.brushSize}px`;
+                }
+            }
+
+            // Enhanced Quick Actions
+            addOmCenter() {
+                const centerX = this.canvas.width / 2;
+                const centerY = this.canvas.height / 2;
+                
+                this.ctx.save();
+                
+                // Create golden gradient
+                const omGradient = this.ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 40);
+                omGradient.addColorStop(0, '#FFD700');
+                omGradient.addColorStop(1, '#DAA520');
+                
+                this.ctx.fillStyle = omGradient;
+                this.ctx.strokeStyle = '#B8860B';
+                this.ctx.lineWidth = 4;
+                this.ctx.font = 'bold 80px serif';
+                this.ctx.textAlign = 'center';
+                this.ctx.textBaseline = 'middle';
+                
+                // Add shadow
+                this.ctx.shadowColor = 'rgba(0,0,0,0.3)';
+                this.ctx.shadowBlur = 10;
+                this.ctx.shadowOffsetY = 5;
+                
+                this.ctx.strokeText('ॐ', centerX, centerY);
+                this.ctx.fillText('ॐ', centerX, centerY);
+                
+                this.ctx.restore();
+                this.saveState();
+                this.showToast('🕉️', 'Sacred Om Added with Divine Glow');
+            }
+
+            addDiyaBorder() {
+                const centerX = this.canvas.width / 2;
+                const centerY = this.canvas.height / 2;
+                const radius = Math.min(this.canvas.width, this.canvas.height) / 2 - 60;
+                
+                for(let i = 0; i < 32; i++) {
+                    const angle = (i * 2 * Math.PI) / 32;
+                    const x = centerX + Math.cos(angle) * radius;
+                    const y = centerY + Math.sin(angle) * radius;
+                    
+                    // Vary the size slightly for natural look
+                    const size = 25 + Math.sin(i * 0.7) * 5;
+                    this.drawEnhancedLamp(x, y, size);
+                }
+                
+                this.saveState();
+                this.showToast('🪔', 'Sacred Diya Border Added');
+            }
+
+            surpriseMe() {
+                const randomTool = this.tools[Math.floor(Math.random() * this.tools.length)];
+                const allFlorals = [...this.keralaFlowers, ...this.traditionalColors];
+                const randomFloral = allFlorals[Math.floor(Math.random() * allFlorals.length)].type;
+                const randomSymmetry = this.symmetryModes[Math.floor(Math.random() * this.symmetryModes.length)].value;
+                
+                this.selectTool(document.querySelector(`.tool-btn[data-tool="${randomTool}"]`));
+                this.selectFloral(document.querySelector(`.floral-option[data-type="${randomFloral}"]`));
+                this.selectSymmetry(document.querySelector(`.symmetry-btn[data-symmetry="${randomSymmetry}"]`));
+                
+                // Add some random elements
+                for(let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        const randomShape = this.authenticShapes[Math.floor(Math.random() * this.authenticShapes.length)];
+                        const x = Math.random() * (this.canvas.width - 100) + 50;
+                        const y = Math.random() * (this.canvas.height - 100) + 50;
+                        this.drawShape(randomShape.type, x, y);
+                    }, i * 500);
+                }
+                
+                this.showToast('🎉', 'Surprise! Magic is happening...');
+            }
+
+            // Canvas & History Management (Enhanced)
+            saveState() {
+                this.historyIndex++;
+                if (this.historyIndex < this.history.length) {
+                    this.history.length = this.historyIndex;
+                }
+                this.history.push(this.canvas.toDataURL());
+                
+                // Limit history size for performance
+                if (this.history.length > 100) {
+                    this.history.shift();
+                    this.historyIndex--;
+                }
+            }
+
+            undo() {
+                if (this.historyIndex > 0) {
+                    this.historyIndex--;
+                    this.restoreState(this.history[this.historyIndex]);
+                    this.showToast('↶', 'Undo');
+                }
+            }
+
+            redo() {
+                if (this.historyIndex < this.history.length - 1) {
+                    this.historyIndex++;
+                    this.restoreState(this.history[this.historyIndex]);
+                    this.showToast('↷', 'Redo');
+                }
+            }
+            
+            restoreState(dataUrl) {
+                const img = new Image();
+                img.onload = () => {
+                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                    this.ctx.drawImage(img, 0, 0);
+                };
+                img.src = dataUrl;
+            }
+
+            clearCanvas() {
+                this.ctx.fillStyle = '#FFFFFF';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                this.drawEnhancedGrid();
+                this.saveState();
+                this.creationsMade++;
+                this.updateCreationsCount();
+                this.showToast('✨', 'Canvas Cleared! Ready for a new masterpiece.');
+                this.setDocumentTitle("New Pookkalam");
+            }
+
+            saveDesign() {
+                const dataUrl = this.canvas.toDataURL();
+                localStorage.setItem('pookkalamDesign', dataUrl);
+                localStorage.setItem('pookkalamDesignTime', new Date().toISOString());
+                this.showToast('💾', 'Design Saved with Timestamp!');
+                this.setDocumentTitle("Design Saved");
+            }
+
+            downloadDesign(format) {
+                const link = document.createElement('a');
+                const timestamp = new Date().toISOString().slice(0,19).replace(/:/g, '-');
+                link.download = `pookkalam-masterpiece-${timestamp}.${format}`;
+                
+                if (format === 'jpeg') {
+                    // Create white background for JPEG
+                    const tempCanvas = document.createElement('canvas');
+                    tempCanvas.width = this.canvas.width;
+                    tempCanvas.height = this.canvas.height;
+                    const tempCtx = tempCanvas.getContext('2d');
+                    tempCtx.fillStyle = 'white';
+                    tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                    tempCtx.drawImage(this.canvas, 0, 0);
+                    link.href = tempCanvas.toDataURL('image/jpeg', 0.95);
+                } else {
+                    link.href = this.canvas.toDataURL('image/png');
+                }
+                
+                link.click();
+                this.showToast('📥', `Masterpiece Downloaded as ${format.toUpperCase()}`);
+                this.setDocumentTitle("Design Downloaded");
+            }
+            
+            // Enhanced Theming
+            toggleTheme() {
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                document.getElementById('themeSwitcher').textContent = isDark ? '☀️' : '🌙';
+                localStorage.setItem('pookkalamTheme', isDark ? 'dark' : 'light');
+                this.showToast(isDark ? '🌙' : '☀️', `${isDark ? 'Uthradam Night' : 'Divine Day'} Theme Activated`);
+                
+                // Redraw grid with new theme colors
+                setTimeout(() => this.initializeCanvas(), 100);
+            }
+
+            // Enhanced Utility Methods
+            showToast(icon, message) {
+                // Remove existing toast
+                const existingToast = document.querySelector('.toast');
+                if (existingToast) {
+                    document.body.removeChild(existingToast);
+                }
+                
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.innerHTML = `<span style="font-size: 1.2em;">${icon}</span> ${message}`;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    if (document.body.contains(toast)) {
+                        document.body.removeChild(toast);
+                    }
+                }, 4000);
+            }
+            
+            // Enhanced texture generation methods
+            generateAdvancedFloralTexture(type, size) {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+                
+                const colors = {
+                    thumba: { primary: '#FFFFFF', secondary: '#F0F8FF', accent: '#E6E6FA' },
+                    hibiscus: { primary: '#DC143C', secondary: '#B22222', accent: '#FF69B4' },
+                    mandaram: { primary: '#FFFF00', secondary: '#FFD700', accent: '#FFA500' },
+                    kanakambaram: { primary: '#FF8C00', secondary: '#FF6347', accent: '#FFD700' },
+                    shankhupushpam: { primary: '#4169E1', secondary: '#0000CD', accent: '#6495ED' },
+                    jasmine: { primary: '#F8F8FF', secondary: '#FFFFFF', accent: '#FFFACD' }
+                };
+                
+                const colorSet = colors[type] || colors.thumba;
+                
+                // Create complex gradient
+                const gradient = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+                gradient.addColorStop(0, colorSet.primary);
+                gradient.addColorStop(0.7, colorSet.secondary);
+                gradient.addColorStop(1, colorSet.accent);
+                
+                ctx.fillStyle = gradient;
+                
+                // Draw flower based on type with enhanced details
+                switch(type) {
+                    case 'thumba':
+                    case 'jasmine':
+                        // Delicate small flower
+                        for(let i = 0; i < 5; i++) {
+                            const angle = (i * 2 * Math.PI) / 5;
+                            ctx.save();
+                            ctx.translate(size/2, size/2);
+                            ctx.rotate(angle);
+                            ctx.beginPath();
+                            ctx.ellipse(0, -size/3, size/10, size/3, 0, 0, 2 * Math.PI);
+                            ctx.fill();
+                            ctx.restore();
+                        }
+                        break;
+                        
+                    case 'hibiscus':
+                        // Large hibiscus with detailed petals
+                        for(let i = 0; i < 5; i++) {
+                            const angle = (i * 2 * Math.PI) / 5;
+                            ctx.save();
+                            ctx.translate(size/2, size/2);
+                            ctx.rotate(angle);
+                            
+                            // Create petal shape
+                            ctx.beginPath();
+                            ctx.moveTo(0, 0);
+                            ctx.quadraticCurveTo(-size/6, -size/3, 0, -size/2);
+                            ctx.quadraticCurveTo(size/6, -size/3, 0, 0);
+                            ctx.fill();
+                            ctx.restore();
+                        }
+                        
+                        // Add center stamen
+                        ctx.fillStyle = '#8B0000';
+                        ctx.beginPath();
+                        ctx.arc(size/2, size/2, size/12, 0, 2 * Math.PI);
+                        ctx.fill();
+                        break;
+                        
+                    case 'mandaram':
+                        // Sunflower-like pattern
+                        const petals = 12;
+                        for(let i = 0; i < petals; i++) {
+                            const angle = (i * 2 * Math.PI) / petals;
+                            ctx.save();
+                            ctx.translate(size/2, size/2);
+                            ctx.rotate(angle);
+                            ctx.beginPath();
+                            ctx.ellipse(0, -size/3, size/8, size/4, 0, 0, 2 * Math.PI);
+                            ctx.fill();
+                            ctx.restore();
+                        }
+                        
+                        // Dark center
+                        ctx.fillStyle = '#8B4513';
+                        ctx.beginPath();
+                        ctx.arc(size/2, size/2, size/8, 0, 2 * Math.PI);
+                        ctx.fill();
+                        break;
+                        
+                    default:
+                        // Generic detailed flower
+                        for(let i = 0; i < 6; i++) {
+                            const angle = (i * 2 * Math.PI) / 6;
+                            ctx.save();
+                            ctx.translate(size/2, size/2);
+                            ctx.rotate(angle);
+                            ctx.beginPath();
+                            ctx.ellipse(0, -size/4, size/12, size/4, 0, 0, 2 * Math.PI);
+                            ctx.fill();
+                            ctx.restore();
+                        }
+                }
+                
+                return canvas;
+            }
+
+            generateAdvancedColorTexture(color, gradient, size) {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+                
+                // Create complex gradient texture
+                const radialGradient = ctx.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
+                radialGradient.addColorStop(0, gradient[0]);
+                radialGradient.addColorStop(0.7, gradient[1]);
+                radialGradient.addColorStop(1, this.darkenColor(gradient[1], 0.2));
+                
+                ctx.fillStyle = radialGradient;
+                ctx.fillRect(0, 0, size, size);
+                
+                // Add texture pattern
+                ctx.fillStyle = this.lightenColor(color, 0.1);
+                ctx.globalAlpha = 0.3;
+                
+                // Create subtle pattern
+                for(let i = 0; i < 30; i++) {
+                    const x = Math.random() * size;
+                    const y = Math.random() * size;
+                    const radius = Math.random() * 2 + 1;
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+                
+                return canvas;
+            }
+            
+            generateMiniFloralPattern(color) {
+                const canvas = document.createElement('canvas');
+                canvas.width = 80;
+                canvas.height = 80;
+                const ctx = canvas.getContext('2d');
+                
+                // Create subtle background pattern
+                const gradient = ctx.createLinearGradient(0, 0, 80, 80);
+                gradient.addColorStop(0, this.lightenColor(color, 0.8));
+                gradient.addColorStop(1, this.lightenColor(color, 0.9));
+                
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, 80, 80);
+                
+                // Add tiny flower patterns
+                ctx.fillStyle = this.lightenColor(color, 0.3);
+                ctx.globalAlpha = 0.4;
+                
+                for(let i = 0; i < 8; i++) {
+                    const x = (i % 3) * 25 + 10;
+                    const y = Math.floor(i / 3) * 25 + 10;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 3, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+                
+                return canvas;
+            }
+            
+            darkenColor(color, factor) {
+                const num = parseInt(color.replace("#", ""), 16);
+                const amt = Math.round(255 * factor);
+                const R = Math.max((num >> 16) - amt, 0);
+                const G = Math.max((num >> 8 & 0x00FF) - amt, 0);
+                const B = Math.max((num & 0x0000FF) - amt, 0);
+                return "#" + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+            }
+            
+            lightenColor(color, factor) {
+                const num = parseInt(color.replace("#", ""), 16);
+                const amt = Math.round(255 * factor);
+                const R = Math.min((num >> 16) + amt, 255);
+                const G = Math.min((num >> 8 & 0x00FF) + amt, 255);
+                const B = Math.min((num & 0x0000FF) + amt, 255);
+                return "#" + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+            }
+        }
+
+        // Initialize the enhanced application
+        const pookkalamCreator = new PremiumPookkalamCreator();
+
+        // Load saved theme on startup
+        if (localStorage.getItem('pookkalamTheme') === 'dark') {
+            pookkalamCreator.toggleTheme();
+        }
+
+        // Add welcome animation
+        setTimeout(() => {
+            pookkalamCreator.showToast('🎨', 'All tools loaded! Start creating your masterpiece.');
+        }, 1000);
+    </script>
+</body>
+</html>
