@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pookkalamdesign.com/sitemap.xml
