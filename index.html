@@ -7,11 +7,12 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-G0B107C9PQ');
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4820225613195679"
-     crossorigin="anonymous"></script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4820225613195679" crossorigin="anonymous"></script>
+
 <title>Pookkalam Design - Authentic Kerala Pookkalam Designer | Design your Beautiful Onam Pookkalam Online</title>
 <meta name="description" content="Design stunning traditional Pookkalam online with authentic Kerala flowers, sacred patterns, and professional tools. Perfect for Onam 2025 celebrations. Free to use!">
 <meta name="keywords" content="pookkalam design, onam decoration, kerala flowers, flower carpet, pookalam 2025, traditional Pookkalam, onam 2025">
@@ -37,14 +38,16 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pookkalam Design Tool - Authentic Kerala Festival Designer</title>
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#DAA520">
     <meta name="theme-color" content="#DAA520">
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -202,6 +205,28 @@
             background-clip: text;
         }
         
+        /* Navigation */
+        .main-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
         /* Theme Switcher */
         .theme-switcher {
             cursor: pointer;
@@ -242,7 +267,175 @@
             color: var(--text-secondary);
             line-height: 1.6;
             max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Content Sections */
+        .content-section {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .content-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 0.75rem;
+            background: var(--surface);
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .content-panel {
+            display: none;
+            background: var(--surface);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: 0 10px 40px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .content-panel.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .content-subtitle {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .flower-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .flower-card {
+            background: var(--background);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .flower-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        .flower-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .flower-malayalam {
+            font-family: 'Noto Sans Malayalam', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .tutorial-steps {
+            background: var(--background);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
         }
 
         /* Design Studio */
@@ -494,6 +687,7 @@
             align-items: center;
             gap: 0.5rem;
             border: 2px solid transparent;
+            text-decoration: none;
         }
         
         .btn-primary {
@@ -611,6 +805,9 @@
             .banner-content { font-size: 1rem; animation-duration: 15s; }
             .tools-grid { grid-template-columns: repeat(2, 1fr); }
             .shapes-grid, .floral-palette { grid-template-columns: repeat(2, 1fr); }
+            .content-tabs { flex-direction: column; align-items: center; }
+            .content-panel { padding: 2rem 1rem; }
+            .main-nav { display: none; }
         }
     </style>
 </head>
@@ -628,6 +825,12 @@
                 <div class="logo-icon">🌺</div>
                 <div class="logo-text">Pookkalam Design Tool</div>
             </div>
+            <nav class="main-nav">
+                <a href="#design-tool" class="nav-link">Design Tool</a>
+                <a href="#about" class="nav-link">About Pookkalam</a>
+                <a href="#tutorials" class="nav-link">Tutorials</a>
+                <a href="#flowers" class="nav-link">Kerala Flowers</a>
+            </nav>
             <div class="theme-switcher" id="themeSwitcher" title="Toggle Theme">🌙</div>
         </div>
     </header>
@@ -635,10 +838,209 @@
     <main>
         <section class="hero">
             <h1>Authentic Kerala Pookkalam Designer</h1>
-            <p>Craft stunning traditional flower carpets with professional precision for the perfect Onam celebration.</p>
+            <p>Craft stunning traditional flower carpets with professional precision for the perfect Onam celebration. Discover the rich cultural heritage of Kerala through our authentic digital Pookkalam creation tool.</p>
+            <div class="hero-actions">
+                <a href="#design-tool" class="btn btn-primary">🎨 Start Creating</a>
+                <a href="#about" class="btn btn-outline">📚 Learn About Pookkalam</a>
+            </div>
         </section>
 
-        <div class="design-studio">
+        <!-- Content Sections -->
+        <section class="content-section">
+            <div class="content-tabs">
+                <button class="tab-btn active" data-tab="about">
+                    <span>🏛️</span> About Pookkalam
+                </button>
+                <button class="tab-btn" data-tab="tutorials">
+                    <span>📖</span> Tutorials & Guides
+                </button>
+                <button class="tab-btn" data-tab="flowers">
+                    <span>🌸</span> Kerala Flowers
+                </button>
+                <button class="tab-btn" data-tab="history">
+                    <span>📜</span> History & Culture
+                </button>
+            </div>
+
+            <!-- About Pookkalam Panel -->
+            <div id="about" class="content-panel active">
+                <h2 class="content-title">The Art and Tradition of Kerala Pookkalam</h2>
+                
+                <p class="content-text">
+                    Pookkalam, the intricate flower carpet designs of Kerala, represent one of India's most beautiful traditional art forms. Dating back centuries, these vibrant creations are an integral part of Onam celebrations, welcoming King Mahabali's annual return to his beloved homeland. The word "Pookkalam" derives from two Malayalam words: "Poo" meaning flower and "Kalam" meaning art or design.
+                </p>
+
+                <h3 class="content-subtitle">Cultural Significance of Pookkalam</h3>
+                <p class="content-text">
+                    Every Pookkalam design carries deep cultural and spiritual significance. These colorful arrangements are believed to welcome prosperity, ward off evil spirits, and create a sacred space for divine blessings. The circular patterns represent the cycle of life, unity, and the cosmic order. Families across Kerala wake up early during the ten-day Onam festival to create these masterpieces in their courtyards, each day adding more complexity and beauty to their designs.
+                </p>
+
+                <h3 class="content-subtitle">Traditional Design Elements</h3>
+                <p class="content-text">
+                    Authentic Pookkalam designs follow specific traditional patterns that have been passed down through generations. The central element typically features a circular or lotus motif, symbolizing purity and divine presence. Radiating outward, petals and geometric patterns create symmetrical beauty. The designs often incorporate religious symbols like the Om, conch shells, and lotus petals, each carrying spiritual meaning.
+                </p>
+
+                <h3 class="content-subtitle">Modern Digital Preservation</h3>
+                <p class="content-text">
+                    Our digital Pookkalam designer helps preserve this ancient art form for future generations while making it accessible to people worldwide. Whether you're a Kerala native living abroad or someone fascinated by Indian culture, our tool allows you to experience the joy and creativity of traditional Pookkalam making. The digital format also enables experimentation with colors and patterns that might be difficult to achieve with fresh flowers.
+                </p>
+            </div>
+
+            <!-- Tutorials Panel -->
+            <div id="tutorials" class="content-panel">
+                <h2 class="content-title">Complete Guide to Creating Beautiful Pookkalam</h2>
+                
+                <p class="content-text">
+                    Master the ancient art of Pookkalam creation with our comprehensive tutorials. Whether you're a beginner or looking to perfect your technique, these step-by-step guides will help you create stunning traditional designs that honor Kerala's rich cultural heritage.
+                </p>
+
+                <div class="tutorial-steps">
+                    <h3 class="content-subtitle">Traditional Pookkalam Creation Process</h3>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Prepare the Sacred Space</h4>
+                            <p>Clean the area thoroughly and create a smooth, level surface. In traditional practice, cow dung mixed with water was used to purify the ground. Mark the center point and plan your design radius.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Start with the Center Design</h4>
+                            <p>Begin with a small circle at the center using bright yellow flowers like Thumba or Mandaram. This represents the sun or divine light. Traditional designs often start with a lotus motif or geometric pattern.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Build Concentric Circles</h4>
+                            <p>Work outward in concentric circles, alternating colors and patterns. Each ring should complement the previous one while maintaining symmetry. Use contrasting colors to create visual impact.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Add Traditional Motifs</h4>
+                            <p>Incorporate Kerala-specific elements like peacock patterns, lamp (diya) designs, or elephant motifs. These symbols carry cultural significance and enhance the spiritual aspect of your Pookkalam.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Perfect the Symmetry</h4>
+                            <p>Ensure all elements are symmetrically placed. Traditional Pookkalam follows 4-way, 6-way, 8-way, or 12-way symmetry patterns. Step back frequently to check the overall balance and harmony.</p>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Final Touches and Blessing</h4>
+                            <p>Add final decorative elements like rice grains, turmeric powder, or small leaves. Light a traditional lamp (diya) at the center and offer prayers for prosperity and happiness.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="content-subtitle">Digital Design Tips</h3>
+                <p class="content-text">
+                    When using our digital tool, start with light sketches using the precision pen, then build up layers with the floral brush. Experiment with different symmetry options to see how they affect your design. Use the surprise me feature for inspiration, and don't forget to save your progress regularly. The undo/redo functions allow you to experiment freely without fear of losing your work.
+                </p>
+            </div>
+
+            <!-- Kerala Flowers Panel -->
+            <div id="flowers" class="content-panel">
+                <h2 class="content-title">Authentic Kerala Flowers for Pookkalam</h2>
+                
+                <p class="content-text">
+                    Kerala's tropical climate nurtures a spectacular variety of flowers that have been used in Pookkalam creation for centuries. Each flower carries its own significance, color symbolism, and traditional placement within the design. Understanding these flowers is essential for creating authentic Pookkalam that honors Kerala's cultural heritage.
+                </p>
+
+                <div class="flower-grid">
+                    <div class="flower-card">
+                        <div class="flower-name">🤍 Thumba</div>
+                        <div class="flower-malayalam">തുമ്പ (Leucas aspera)</div>
+                        <p>The sacred white Thumba flowers are considered most auspicious for Pookkalam. Their pure white color represents divinity, peace, and spiritual purity. Traditionally used at the center of the design, these tiny flowers are believed to invite divine blessings and ward off negative energies.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <div class="flower-name">🌺 Chemparathy</div>
+                        <div class="flower-malayalam">ചെമ്പരത്തി (Hibiscus rosa-sinensis)</div>
+                        <p>The vibrant red Hibiscus, known as Chemparathy in Malayalam, symbolizes passion, devotion, and the goddess Devi. Its large, striking petals create beautiful contrast in Pookkalam designs. Often used in outer rings to create dramatic visual impact and represent the divine feminine energy.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <div class="flower-name">🌻 Mandaram</div>
+                        <div class="flower-malayalam">മന്ദാരം (Ixora coccinea)</div>
+                        <p>Bright orange-red Mandaram flowers represent fire element and prosperity. These small, clustered flowers are perfect for creating fine details and intricate patterns. In Hindu mythology, Mandaram is associated with Lord Vishnu and brings good fortune to households.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <div class="flower-name">🌼 Kanakambaram</div>
+                        <div class="flower-malayalam">കണകാംബരം (Crossandra infundibuliformis)</div>
+                        <p>Golden orange Kanakambaram flowers symbolize prosperity and abundance. Their unique shape and bright color make them excellent for creating sun-like patterns and radiating designs. These flowers are believed to attract wealth and success to the household.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <div class="flower-name">🌸 Shankhupushpam</div>
+                        <div class="flower-malayalam">ശംഖുപുഷ്പം (Clitoria ternatea)</div>
+                        <p>The beautiful blue Shankhupushpam, also known as Asian pigeonwings, represents tranquility and spiritual awakening. Its distinctive blue color is rare in nature and highly valued in Pookkalam. The flower's shape resembles a conch shell, hence the name Shankhupushpam.</p>
+                    </div>
+
+                    <div class="flower-card">
+                        <div class="flower-name">🌷 Jasmine (Malli)</div>
+                        <div class="flower-malayalam">മല്ലി (Jasminum sambac)</div>
+                        <p>Fragrant white Jasmine flowers represent purity, love, and devotion. Their intoxicating fragrance adds a sensory dimension to the Pookkalam experience. In Kerala traditions, Jasmine is considered sacred to goddess Lakshmi and brings prosperity and happiness.</p>
+                    </div>
+                </div>
+
+                <h3 class="content-subtitle">Flower Arrangement Principles</h3>
+                <p class="content-text">
+                    The placement of flowers in Pookkalam follows specific color theory and spiritual principles. White and yellow flowers typically occupy the center, representing purity and divine light. Red and orange flowers create vibrant middle rings symbolizing energy and prosperity. Blue and purple flowers in outer rings represent infinity and spiritual transcendence. The contrast between colors creates visual depth and spiritual harmony.
+                </p>
+
+                <h3 class="content-subtitle">Seasonal Availability and Alternatives</h3>
+                <p class="content-text">
+                    Traditional Pookkalam creation depends on seasonal flower availability. During Onam (August-September), most flowers are naturally abundant. Modern adaptations include using colored rice, turmeric powder, and even synthetic materials while maintaining traditional color schemes and patterns. Our digital tool allows year-round creation without seasonal limitations.
+                </p>
+            </div>
+
+            <!-- History & Culture Panel -->
+            <div id="history" class="content-panel">
+                <h2 class="content-title">Historical Origins and Cultural Evolution</h2>
+                
+                <p class="content-text">
+                    The tradition of Pookkalam dates back over 1,000 years, deeply rooted in the legend of King Mahabali and the festival of Onam. According to ancient texts and oral traditions, this art form evolved from simple flower offerings to the elaborate carpet designs we see today. Archaeological evidence suggests that flower arrangements for religious purposes existed in Kerala from the 8th century CE.
+                </p>
+
+                <h3 class="content-subtitle">The Legend of King Mahabali</h3>
+                <p class="content-text">
+                    The story of Pookkalam is inseparable from the legend of King Mahabali, the beloved Asura king who once ruled Kerala. According to Hindu mythology, Mahabali's reign was marked by prosperity, equality, and happiness. When Lord Vishnu, in his Vamana avatar, sent the king to the netherworld, he granted Mahabali permission to visit his subjects once a year. Pookkalam serves as a welcome carpet for the king's annual return during Onam.
+                </p>
+
+                <h3 class="content-subtitle">Regional Variations Across Kerala</h3>
+                <p class="content-text">
+                    Different regions of Kerala have developed unique Pookkalam styles and traditions. In Thrissur, designs often feature temple-inspired patterns with intricate geometric details. Kochi's coastal influence brings marine motifs like shells and waves. The hill stations of Wayanad incorporate mountain flowers and tribal artistic elements. Southern Kerala's Thiruvananthapuram region emphasizes classical temple art influences in their designs.
+                </p>
+
+                <h3 class="content-subtitle">Modern Evolution and Global Reach</h3>
+                <p class="content-text">
+                    Today, Pookkalam has transcended geographical boundaries, celebrated by Malayalis worldwide and appreciated by art enthusiasts globally. Modern innovations include LED lighting, synthetic materials, and digital platforms like ours. International Onam celebrations in countries like the US, UK, and Middle East have adapted Pookkalam creation using locally available flowers while maintaining traditional aesthetics.
+                </p>
+
+                <h3 class="content-subtitle">Educational and Therapeutic Benefits</h3>
+                <p class="content-text">
+                    Recent studies have highlighted the therapeutic benefits of Pookkalam creation, including stress reduction, improved focus, and enhanced creativity. Educational institutions now include Pookkalam in art therapy programs and cultural studies. The practice promotes environmental awareness, appreciation for natural beauty, and preservation of traditional knowledge systems.
+                </p>
+            </div>
+        </section>
+
+        <!-- Design Tool Section -->
+        <div id="design-tool" class="design-studio">
             <div class="studio-container">
                 <div class="studio-layout">
                     <div class="panel">
@@ -734,6 +1136,36 @@
     </main>
 
     <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.dataset.tab;
+                
+                // Remove active class from all tabs and panels
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding panel
+                btn.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Original PookkalamCreator class with all functionality
         class PremiumPookkalamCreator {
             constructor() {
                 this.canvas = document.getElementById('designCanvas');
@@ -1504,7 +1936,7 @@
                 this.ctx.restore();
             }
             
-            drawEnhancedElephant(x, y, size) {
+                        drawEnhancedElephant(x, y, size) {
                 // Elephant body with detailed shape
                 this.ctx.save();
                 const bodyGradient = this.ctx.createRadialGradient(x, y, 0, x, y, size/3);
